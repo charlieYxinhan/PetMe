@@ -454,6 +454,9 @@ html:has(.menu-dialog[open]) { overflow: hidden; }
 }
 
 @media (max-width: 700px) {
+  .hero-reel-toggle { gap: .35rem; min-height: 36px; padding: .3rem .65rem; font-size: .75rem; }
+  /* Keep the mobile touch target 44px tall. */
+  .hero-reel-toggle::before { position: absolute; inset: -4px 0; content: ""; }
   .hero-copy { margin-inline: auto; text-align: center; }
   .hero-description { margin-inline: auto; }
   .care-row, .care-row:nth-child(even) { grid-template: "photo" auto "copy" auto / minmax(0, 1fr); }
