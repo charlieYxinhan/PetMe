@@ -456,7 +456,6 @@ html:has(.menu-dialog[open]) { overflow: hidden; }
 @media (max-width: 700px) {
   .hero-copy { margin-inline: auto; text-align: center; }
   .hero-description { margin-inline: auto; }
-  .hero-reel-toggle { left: 50%; right: auto; transform: translateX(-50%); }
   .care-row, .care-row:nth-child(even) { grid-template: "photo" auto "copy" auto / minmax(0, 1fr); }
   .care-copy { text-align: center; }
   .care-copy p { margin-inline: auto; }
