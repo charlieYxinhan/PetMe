@@ -4,33 +4,44 @@ import type { ReactNode } from "react";
 import "@fontsource-variable/dm-sans";
 import "@fontsource/instrument-serif/latin-400.css";
 import "@fontsource/instrument-serif/latin-400-italic.css";
+import "@fontsource/caveat/latin-700.css";
+import BookingLink from "./booking-link";
 import SiteHeader from "./site-header";
+import PageMotion from "./page-motion";
+import { copy as t } from "./copy";
+import SiteFooter from "./site-footer";
 import { siteUrl } from "./site";
+import StudioDetails from "./studio-details";
 import "./styles.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: "PetMe Pet Grooming", template: "%s | PetMe Pet Grooming" },
-  description: "Gentle dog and cat grooming. Explore PetMe's services, see pricing, and book online.",
+  description: "Korean-style dog and cat grooming in Markham. Explore PetMe’s services, prices, and booking options.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-CA">
       <body>
-        <a className="skip-link" href="#content">Skip to content</a>
+        <PageMotion />
+        <a className="skip-link" href="#content">{t.skip}</a>
         <SiteHeader />
         <main id="content">{children}</main>
-        <footer className="site-footer">
-          <div className="shell footer-inner">
-            <Link href="/" className="brand-name">PetMe</Link>
-            <p>Dog &amp; cat grooming</p>
-            <nav aria-label="Footer navigation">
-              <Link href="/services">Services &amp; Pricing</Link>
-              <Link href="/book">Book an Appointment</Link>
-            </nav>
+        <SiteFooter>
+          <div className="shell wide-shell footer-inner">
+            <div className="footer-bar">
+              <Link href="/" className="brand-name">PetMe</Link>
+              <nav aria-label={t.footerNav}>
+                <Link href="/services" className="button footer-pricing">
+                  <span className="bloom" aria-hidden="true" />{t.pricing}
+                </Link>
+                <BookingLink />
+              </nav>
+            </div>
+            <StudioDetails />
           </div>
-        </footer>
+        </SiteFooter>
       </body>
     </html>
   );

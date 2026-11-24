@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { studio } from "../site";
+import { copy as t } from "../copy";
 
-export const metadata: Metadata = { title: "Book an Appointment", alternates: { canonical: "/book" } };
+export const metadata: Metadata = { title: t.bookNow, alternates: { canonical: "/book" } };
 
 function getBookingUrl() {
   const configuredUrl = process.env.MOEGO_BOOKING_URL;
@@ -21,16 +23,19 @@ export default function BookingPage() {
   return (
     <section className="shell booking-section">
       <div className="booking-card">
-        <h1>Book an appointment</h1>
+        <h1>{t.bookNow}</h1>
         {bookingUrl ? (
           <>
-            <p>Choose a grooming service and see the available dates and times in our MoeGo booking portal.</p>
-            <a href={bookingUrl} className="button button-dark">See Available Times</a>
+            <p>{t.bookingIntro}</p>
+            <a href={bookingUrl} className="button button-dark">{t.availableTimes}</a>
           </>
         ) : (
           <>
-            <p>Online booking opens soon. You can explore our dog and cat services and see pricing in the meantime.</p>
-            <Link href="/services" className="button button-dark">View Services &amp; Pricing</Link>
+            <p>{t.phoneBookingIntro}</p>
+            <div className="actions">
+              <a href={`tel:${studio.bookingPhone}`} className="button button-dark">{t.phoneBooking}</a>
+              <Link href="/services" className="button button-outline">{t.viewPricing}</Link>
+            </div>
           </>
         )}
       </div>

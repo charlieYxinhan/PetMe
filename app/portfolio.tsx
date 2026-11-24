@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore, type PointerEvent } from "react";
 import { portfolioPhotos } from "./portfolio-images";
+import { copy as t } from "./copy";
 
 const intervalMs = 3900;
 const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
@@ -95,22 +96,22 @@ export default function Portfolio() {
 
   return (
     <section className="portfolio" id="gallery" aria-labelledby="portfolio-title">
-      <div className="shell">
+      <div className="shell wide-shell" data-scroll-reveal>
         <div className="portfolio-heading">
-          <h2 id="portfolio-title">Grooming portfolio</h2>
+          <h1 id="portfolio-title" className="playful-title">{t.portfolio}</h1>
           <button
             type="button"
             className="portfolio-toggle"
             onClick={() => setPlayPreference(!playing)}
-            aria-label={playing ? "Pause autoplay" : "Start autoplay"}
+            aria-label={playing ? t.pauseAutoplay : t.startAutoplay}
             aria-controls="portfolio-photos"
-          >{playing ? "Pause" : "Play"}</button>
+          >{playing ? t.pause : t.play}</button>
         </div>
         <div className="portfolio-stage">
           <ul
             className="portfolio-rail"
             id="portfolio-photos"
-            aria-label="Grooming photos"
+            aria-label={t.groomingPhotos}
             tabIndex={0}
             ref={railRef}
             onKeyDown={(event) => {
@@ -128,12 +129,12 @@ export default function Portfolio() {
           >
             {portfolioPhotos.map(({ photo, alt }) => (
               <li key={alt} className="portfolio-photo">
-                <Image src={photo} alt={alt} fill sizes="(max-width: 620px) 42vw, 238px" draggable={false} />
+                <Image src={photo} alt={alt} fill sizes="(min-width: 1500px) 352px, (max-width: 620px) 42vw, 238px" draggable={false} />
               </li>
             ))}
           </ul>
-          <button type="button" className="portfolio-arrow portfolio-arrow-prev" onClick={() => move(-1)} aria-label="Previous photo" aria-controls="portfolio-photos"><span aria-hidden="true" /></button>
-          <button type="button" className="portfolio-arrow portfolio-arrow-next" onClick={() => move(1)} aria-label="Next photo" aria-controls="portfolio-photos"><span aria-hidden="true" /></button>
+          <button type="button" className="portfolio-arrow portfolio-arrow-prev" onClick={() => move(-1)} aria-label={t.previousPhoto} aria-controls="portfolio-photos"><span aria-hidden="true" /></button>
+          <button type="button" className="portfolio-arrow portfolio-arrow-next" onClick={() => move(1)} aria-label={t.nextPhoto} aria-controls="portfolio-photos"><span aria-hidden="true" /></button>
         </div>
       </div>
     </section>
