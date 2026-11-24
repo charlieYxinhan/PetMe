@@ -7,6 +7,41 @@ export const dogPrices = [
   ["81 lb and up", "$230+", "$160+", "$120+", "$140+"],
 ] as const;
 
+export const dogPackages = [
+  {
+    title: "Full Spa",
+    qualifier: "For non-shedding dogs",
+    description: ["Bath, blow-dry, ear cleaning,", "sanitary trim, paw pad shaving,", "nail trim, and a full-body haircut."],
+  },
+  {
+    title: "Bath & Tidy",
+    description: ["Bath, blow-dry, ear cleaning,", "sanitary trim, paw pad shaving,", "nail trim, and an eye and paw tidy.", "No body trimming."],
+  },
+  {
+    title: "Bath & Brush",
+    description: ["Bath, blow-dry, brushing,", "and ear cleaning. No trimming."],
+  },
+] as const;
+
+export const catPackages = [
+  {
+    title: "Full Spa",
+    description: ["Bath, blow-dry, ear cleaning, sanitary trim,", "nail trim, and a lion cut."],
+    price: "$140+",
+  },
+  {
+    title: "Bath & Tidy",
+    description: ["Bath, blow-dry, ear cleaning, and nail trim."],
+    shortCoat: "$90+",
+    longCoat: "$110+",
+  },
+] as const;
+
+export const dogPriceNote = [
+  "Dog grooming prices vary by breed, coat condition,",
+  "matting, style, and temperament.",
+] as const;
+
 export const dogAddOns = [
   ["Nail Trim", "$20", "$15"],
   ["Ear Cleaning", "$15", "—"],

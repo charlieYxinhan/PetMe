@@ -1,38 +1,44 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import logo from "../launch-materials/images/logo-reference.jpg";
+import BookingLink from "./booking-link";
+import { copy as t } from "./copy";
+import { SocialIcons } from "./pet-icons";
+import PetMeLogo from "./petme-logo";
 
-type NavigationItem = { label: string; href: string; primary?: boolean } | {
-  label: string;
+type Label = keyof typeof t;
+type NavigationItem = { label: Label; href: string; primary?: boolean } | {
+  label: Label;
   id: string;
-  links: readonly { label: string; href: string }[];
+  links: readonly { label: Label; href: string }[];
 };
 
 const navigation: readonly NavigationItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About Us", id: "about-menu", links: [
-    { label: "About PetMe", href: "/#about" },
-    { label: "Our Approach", href: "/#our-approach" },
-    { label: "Our Team", href: "/#team" },
+  { label: "home", href: "/" },
+  { label: "aboutUs", id: "about-menu", links: [
+    { label: "about", href: "/#about" },
+    { label: "approach", href: "/#our-approach" },
   ] },
-  { label: "Services", id: "services-menu", links: [
-    { label: "Services & Pricing", href: "/services" },
-    { label: "Dog Grooming", href: "/services#dog" },
-    { label: "Cat Grooming", href: "/services#cat" },
+  { label: "services", id: "services-menu", links: [
+    { label: "pricing", href: "/services" },
+    { label: "dog", href: "/services#dog" },
+    { label: "cat", href: "/services#cat" },
   ] },
-  { label: "Academy", href: "/studio#academy" },
-  { label: "Appointments", href: "/book", primary: true },
-  { label: "Photos", href: "/#gallery" },
-  { label: "News & Events", href: "/studio#news" },
-  { label: "Contact Us", href: "/studio#contact" },
+  { label: "appointments", href: "/book", primary: true },
+  { label: "studio", id: "studio-menu", links: [
+    { label: "photos", href: "/photos" },
+    { label: "academy", href: "/studio#academy" },
+    { label: "news", href: "/studio#news" },
+  ] },
+  { label: "contact", href: "/studio#contact" },
 ];
 
-const desktopQuery = "(min-width: 921px)";
+const desktopQuery = "(min-width: 1100px)";
 
 export default function SiteHeader() {
+  const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const mobileButtonRef = useRef<HTMLButtonElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -50,8 +56,8 @@ export default function SiteHeader() {
     let frame: number | null = null;
     const updateHeader = () => {
       frame = null;
-      const progress = Math.max(0, Math.min(window.scrollY / 200, 1));
-      header.style.setProperty("--seal-scale", String(1 + progress * 0.17));
+      const progress = Math.max(0, Math.min(window.scrollY / 180, 1));
+      header.style.setProperty("--seal-progress", String(progress));
       header.toggleAttribute("data-scrolled", window.scrollY > 12);
     };
     const onScroll = () => { frame ??= window.requestAnimationFrame(updateHeader); };
@@ -72,6 +78,30 @@ export default function SiteHeader() {
     };
   }, []);
 
+  useEffect(() => {
+    const inner = headerRef.current?.querySelector<HTMLElement>(".header-inner");
+    const letters = document.querySelector(".hero-oo");
+    const seal = inner?.querySelector<HTMLElement>(".brand-seal");
+    const headline = letters?.closest("h1");
+    if (!inner || !letters || !seal || !headline) return;
+
+    const alignLogo = () => {
+      if (!letters.isConnected) return;
+      const text = letters.getBoundingClientRect();
+      inner.style.setProperty("--seal-offset", `${text.left + text.width / 2 - inner.getBoundingClientRect().left - seal.offsetWidth / 2}px`);
+    };
+    const observer = new ResizeObserver(alignLogo);
+    observer.observe(inner);
+    observer.observe(headline);
+    observer.observe(seal);
+    alignLogo();
+    void document.fonts.ready.then(alignLogo);
+    return () => {
+      observer.disconnect();
+      inner.style.removeProperty("--seal-offset");
+    };
+  }, [pathname]);
+
   return (
     <header
       className="site-header"
@@ -88,31 +118,29 @@ export default function SiteHeader() {
       }}
     >
       <div className="shell header-inner">
-        <Link href="/" className="brand" aria-label="PetMe home" onClick={closeNavigation}>
-          <span className="brand-seal" aria-hidden="true">
-            <span className="brand-image"><Image src={logo} alt="" width={84} height={182} quality={90} /></span>
-          </span>
-          <span className="brand-name mobile-brand-name" aria-hidden="true">PetMe</span>
-        </Link>
-
-        <Link href="/book" className="button button-dark mobile-book" onClick={closeNavigation}>Book Now</Link>
         <button
           className="mobile-toggle"
           ref={mobileButtonRef}
           type="button"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-label={mobileOpen ? t.closeMenu : t.openMenu}
           aria-expanded={mobileOpen}
           aria-controls="petme-navigation"
           onClick={() => { setMobileOpen(!mobileOpen); setDropdown(null); }}
         >
           <span className="menu-icon" aria-hidden="true"><span /><span /><span /></span>
         </button>
+        <Link href="/" className="brand" aria-label={t.homeLink} onClick={closeNavigation}>
+          <span className="brand-seal" aria-hidden="true">
+            <PetMeLogo />
+          </span>
+        </Link>
+        <BookingLink className="mobile-book" onClick={closeNavigation} />
 
-        <nav id="petme-navigation" className="main-nav" aria-label="Main navigation" data-open={mobileOpen || undefined}>
+        <nav id="petme-navigation" className="main-nav" aria-label={t.navigation} data-open={mobileOpen || undefined}>
           <ul className="nav-list">
             {navigation.map((item) => {
               if ("href" in item) {
-                return <li key={item.label}><Link href={item.href} className={item.primary ? "nav-appointment" : undefined} onClick={closeNavigation}>{item.label}</Link></li>;
+                return <li key={item.label}><Link href={item.href} className={item.primary ? "nav-appointment" : undefined} onClick={closeNavigation}>{t[item.label]}</Link></li>;
               }
 
               const expanded = dropdown?.id === item.id;
@@ -131,13 +159,14 @@ export default function SiteHeader() {
                     aria-controls={item.id}
                     aria-expanded={expanded}
                     onClick={() => setDropdown((current) => current?.id === item.id && current.pinned ? null : { id: item.id, pinned: true })}
-                  >{item.label}<span className="nav-chevron" aria-hidden="true" /></button>
+                  >{t[item.label]}<span className="nav-chevron" aria-hidden="true" /></button>
                   <ul className="nav-dropdown" id={item.id} hidden={!expanded}>
-                    {item.links.map((link) => <li key={link.href}><Link href={link.href} onClick={closeNavigation}>{link.label}</Link></li>)}
+                    {item.links.map((link) => <li key={link.href}><Link href={link.href} onClick={closeNavigation}>{t[link.label]}</Link></li>)}
                   </ul>
                 </li>
               );
             })}
+            <li className="nav-social"><SocialIcons /></li>
           </ul>
         </nav>
       </div>
