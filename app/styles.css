@@ -479,6 +479,29 @@ html:has(.menu-dialog[open]) { overflow: hidden; }
   .hero-reel-toggle::before { position: absolute; inset: -4px 0; content: ""; }
   .hero-copy { margin-inline: auto; text-align: center; }
   .hero-description { margin-inline: auto; }
+  .care-section .section { padding-block-start: clamp(2rem, 5.4vw, 2.35rem); }
+  .care-section .section-heading {
+    --approach-icon-size: clamp(1.5rem, 6.5vw, 2.4rem);
+    display: grid;
+    grid-template-columns: var(--approach-icon-size) minmax(0, auto) var(--approach-icon-size);
+    align-items: center;
+    justify-content: center;
+    gap: clamp(.4rem, 2vw, .9rem);
+    margin-bottom: .5rem;
+  }
+  .care-section .section-heading h2 { font-size: clamp(2.65rem, 8vw, 3.15rem); }
+  .care-section .section-heading::before, .care-section .section-heading::after {
+    aspect-ratio: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: .7;
+    content: "";
+  }
+  .care-section .section-heading::before { background-image: url("/decor/bath-bubbles.svg"); }
+  .care-section .section-heading::after { background-image: url("/decor/orbit-shampoo.svg"); }
+  .care-row:first-child .care-media { aspect-ratio: 5 / 4; }
+  .care-row:first-child .care-media img { height: 100%; object-fit: cover; object-position: center bottom; }
   .care-row, .care-row:nth-child(even) { grid-template: "photo" auto "copy" auto / minmax(0, 1fr); }
   .care-copy { text-align: center; }
   .care-copy p { margin-inline: auto; }
