@@ -109,11 +109,10 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
 .hero { display: grid; align-items: center; min-height: clamp(32rem, 45vw, 37.5rem); background: var(--cream); }
 .hero-content { position: relative; z-index: 1; padding-block: clamp(2.8rem, 5vw, 4.8rem); }
 .hero-copy { max-width: min(53%, 39rem); }
-.hero h1 { font-size: var(--hero-size); line-height: .97; letter-spacing: -.025em; }
-.hero h1 em { color: var(--blue-ink); font-weight: inherit; }
+.hero h1 { font: 700 var(--hero-size)/1 var(--playful); letter-spacing: -.015em; }
+.hero h1 em { color: var(--blue-ink); font-style: normal; }
 .hero-tagline { display: block; margin-top: .15em; font-size: .7em; }
-.hero-description { max-width: 43ch; margin-top: 1.2rem; color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.1rem); }
-.hero-description p + p { margin-top: .7rem; }
+.hero-description { max-width: 32rem; margin-top: 1.2rem; color: var(--muted); font: 700 clamp(1.45rem, 2vw, 1.8rem)/1.25 var(--playful); }
 .hero .actions { margin-top: 1.35rem; }
 .hero-reel { position: absolute; inset: 0 0 0 auto; width: 62%; background: var(--cream); }
 .hero-reel::after { position: absolute; inset: 0; background: linear-gradient(90deg, var(--cream), rgb(250 248 245 / 93%) 16%, rgb(250 248 245 / 45%) 35%, transparent 58%); pointer-events: none; content: ""; }
@@ -207,7 +206,7 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
   gap: clamp(1.5rem, 5vw, 4rem);
   padding: clamp(.25rem, 1.5vw, 1.2rem);
 }
-.care-row:nth-child(even) { --care-tint: #eef5f8; grid-template-areas: "copy photo"; }
+.care-row:nth-child(even) { --care-tint: transparent; grid-template-areas: "copy photo"; }
 .care-row:last-child { --care-tint: #faf5eb; }
 .care-media { grid-area: photo; width: min(100%, var(--care-card-width)); justify-self: center; mix-blend-mode: multiply; }
 .care-media img { display: block; width: 100%; height: auto; }
@@ -225,7 +224,6 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
 .page-intro .actions { margin-top: 1.5rem; }
 .menu-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
 .menu-section { position: relative; min-width: 0; }
-.menu-heading { margin-bottom: 1rem; font-size: clamp(2.7rem, 4.6vw, 3.8rem); }
 .menu-poster { display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--edge); border-radius: .8rem; background: var(--paper); cursor: zoom-in; }
 .menu-poster:hover { border-color: var(--blue-ink); }
 .price-art { display: block; width: 100%; height: auto; font-family: var(--sans); font-variant-numeric: tabular-nums; }
@@ -436,7 +434,6 @@ html:has(.menu-dialog[open]) { overflow: hidden; }
   .hero-reel { position: relative; inset: auto; width: 100%; aspect-ratio: 1.76; }
   .hero-reel::after { background: linear-gradient(var(--cream), transparent 15%); }
   .menu-gallery { grid-template-columns: 1fr; }
-  .menu-heading { color: #382e25; font: 700 clamp(2.55rem, 7vw, 3.35rem)/1.05 var(--playful); text-align: center; }
   .hero .actions { justify-content: center; }
   :is(.hero, .portfolio, .pricing-band, .care-section, .about-section, .page-intro, .booking-section, .studio-sections)::before { opacity: .065; }
   .portfolio, .care-section, .about-section, .booking-section, .studio-sections { --sticker-images: url("/decor/grooming-comb.webp"); --sticker-positions: 94% 4%; --sticker-sizes: 42px; }

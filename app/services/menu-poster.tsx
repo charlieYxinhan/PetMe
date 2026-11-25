@@ -34,7 +34,7 @@ export default function MenuPoster({ id, heading: Heading, children }: {
 
   return (
     <section id={id} aria-labelledby={headingId} className="menu-section">
-      <Heading id={headingId} className="menu-heading">{title}</Heading>
+      <Heading id={headingId} className="visually-hidden">{title}</Heading>
       <button type="button" className="menu-poster" ref={trigger} aria-haspopup="dialog" aria-label={`Enlarge ${title.toLowerCase()} price list`} onClick={openMenu}>
         <PriceArtwork id={id} />
       </button>

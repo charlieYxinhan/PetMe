@@ -37,6 +37,7 @@ export const copy = {
   viewPricing: "View Services & Pricing",
   heroEmphasis: "Kindness,",
   heroTagline: "Every Step of the Way",
+  heroIntro: "At PetMe, we believe every pet deserves to be treated with love, patience, and kindness",
   heroPricing: "View Grooming Prices",
   dogApproach: "Personalized Pet Grooming",
   dogIntro: "From a bath and brush to a full groom, we tailor each visit to your dog’s coat and the finish you’re looking for.",
@@ -48,7 +49,7 @@ export const copy = {
   gentle: "Gentle & Loving Care",
   gentleIntro: "We understand that every pet is different. We take the time to help your furry friend feel comfortable and at ease, using gentle handling, patience, and love throughout every grooming session.",
   gentleAlt: "Small cream-colored dog wrapped in a towel",
-  aboutIntro: "At our Markham studio, we help you choose a groom that suits your pet’s coat and the care you can keep up at home.",
+  aboutIntro: "With over 10 years of professional grooming experience, our team is dedicated to providing personalized care for every dog and cat. From a refreshing bath to a complete makeover, we make your pet’s comfort and happiness our top priority.",
   pauseVideo: "Pause video",
   playVideo: "Play video",
   pauseAnimation: "Pause animation",
@@ -65,9 +66,3 @@ export const copy = {
   zoom: "Image zoom",
   fit: "Fit image",
 };
-
-export const heroParagraphs = [
-  "At PetMe, we believe every pet deserves to be treated with love, patience, and kindness.",
-  "With over 10 years of professional grooming experience, our team is dedicated to providing personalized care for every dog and cat. From a refreshing bath to a complete makeover, we make your pet’s comfort and happiness our top priority.",
-  "Because at PetMe, every furry friend is family.",
-] as const;

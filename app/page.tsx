@@ -6,7 +6,7 @@ import BookingLink from "./booking-link";
 import GroomingReel from "./grooming-reel";
 import { PetMotifs } from "./pet-icons";
 import MenuGallery from "./services/menu-gallery";
-import { copy as t, heroParagraphs } from "./copy";
+import { copy as t } from "./copy";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -47,9 +47,7 @@ export default function Home() {
         <div className="shell wide-shell hero-content">
           <div className="hero-copy">
             <h1 id="home-title">Gr<span className="hero-oo">oo</span>ming with <em>{t.heroEmphasis}</em>{" "}<span className="hero-tagline">{t.heroTagline}</span></h1>
-            <div className="hero-description">
-              {heroParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            </div>
+            <p className="hero-description">{t.heroIntro}</p>
             <div className="actions">
               <BookingLink />
               <Link href="/services" className="button button-outline">{t.heroPricing}</Link>
