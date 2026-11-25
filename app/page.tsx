@@ -45,7 +45,7 @@ export default function Home() {
     <>
       <section className="hero" aria-labelledby="home-title">
         <div className="shell wide-shell hero-content">
-          <div className="hero-copy">
+          <div className="hero-copy" data-scroll-reveal>
             <h1 id="home-title">Gr<span className="hero-oo">oo</span>ming with <em>{t.heroEmphasis}</em>{" "}<span className="hero-tagline">{t.heroTagline}</span></h1>
             <p className="hero-description">{t.heroIntro}</p>
             <div className="actions">
@@ -60,8 +60,8 @@ export default function Home() {
       </section>
 
       <section id="pricing" className="pricing-band" aria-labelledby="services-title">
-        <div className="shell wide-shell section" data-scroll-reveal>
-          <div className="section-heading">
+        <div className="shell wide-shell section">
+          <div className="section-heading" data-scroll-reveal>
             <h2 id="services-title" className="playful-title">{t.pricing}</h2>
           </div>
           <MenuGallery heading="h3" />
@@ -70,14 +70,14 @@ export default function Home() {
 
       <section className="care-section" id="our-approach" aria-labelledby="care-title">
         <div className="shell wide-shell section">
-          <div className="section-heading"><h2 id="care-title" className="playful-title">{t.approach}</h2></div>
+          <div className="section-heading" data-scroll-reveal><h2 id="care-title" className="playful-title">{t.approach}</h2></div>
           <div className="care-rows">
             {approach.map(({ title, description, image, alt, label, href, icons }) => (
-              <article className="care-row" key={title} data-scroll-reveal>
-                <figure className="care-media">
+              <article className="care-row" key={title}>
+                <figure className="care-media" data-scroll-reveal>
                   <Image src={image} alt={alt} width={1254} height={1254} sizes="(max-width: 700px) 90vw, (max-width: 1120px) 45vw, (min-width: 1500px) 576px, 470px" />
                 </figure>
-                <div className="care-copy">
+                <div className="care-copy" data-scroll-reveal>
                   <h3>{title}</h3>
                   <p>{description}</p>
                   <PetMotifs icons={icons} />
@@ -90,9 +90,9 @@ export default function Home() {
       </section>
 
       <section className="about-section" id="about" aria-labelledby="about-title">
-        <div className="shell wide-shell section about-grid" data-scroll-reveal>
-          <h2 id="about-title" className="playful-title">{t.about}</h2>
-          <div className="about-copy">
+        <div className="shell wide-shell section about-grid">
+          <h2 id="about-title" className="playful-title" data-scroll-reveal>{t.about}</h2>
+          <div className="about-copy" data-scroll-reveal>
             <p>{t.aboutIntro}</p>
             <ul className="about-services">
               <li><Link href="/services#dog" className="text-link">{t.dog}</Link></li>

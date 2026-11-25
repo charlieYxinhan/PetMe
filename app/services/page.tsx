@@ -21,7 +21,7 @@ export default function Services() {
       <section className="pricing-band" aria-label="Grooming price lists">
         <div className="shell wide-shell section">
           <MenuGallery />
-          <div className="actions menu-book"><BookingLink /></div>
+          <div className="actions menu-book" data-scroll-reveal><BookingLink /></div>
         </div>
       </section>
     </>

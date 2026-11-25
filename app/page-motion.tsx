@@ -1,12 +1,13 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import PetMeLogo from "./petme-logo";
 
 export default function PageMotion() {
   const pathname = usePathname();
   const router = useRouter();
+  const preloaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (pathname !== "/") return;
@@ -30,14 +31,26 @@ export default function PageMotion() {
         entry.target.setAttribute("data-revealed", "");
         observer.unobserve(entry.target);
       }
-    }, { rootMargin: "0px 0px -12px 0px" });
+    }, { rootMargin: "0px 0px -16px 0px" });
 
-    document.querySelectorAll("[data-scroll-reveal]:not([data-revealed])").forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    let disposed = false;
+    function observeSections() {
+      if (disposed) return;
+      document.querySelectorAll("[data-scroll-reveal]:not([data-revealed])").forEach((element) => observer.observe(element));
+    }
+
+    const loadingAnimation = preloaderRef.current?.getAnimations?.()[0];
+    if (loadingAnimation) void loadingAnimation.finished.then(observeSections, observeSections);
+    else observeSections();
+
+    return () => {
+      disposed = true;
+      observer.disconnect();
+    };
   }, [pathname]);
 
   return (
-    <div className="page-preloader" key={pathname} aria-hidden="true">
+    <div className="page-preloader" key={pathname} ref={preloaderRef} aria-hidden="true">
       <PetMeLogo animated />
     </div>
   );

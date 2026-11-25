@@ -96,8 +96,8 @@ export default function Portfolio() {
 
   return (
     <section className="portfolio" id="gallery" aria-labelledby="portfolio-title">
-      <div className="shell wide-shell" data-scroll-reveal>
-        <div className="portfolio-heading">
+      <div className="shell wide-shell">
+        <div className="portfolio-heading" data-scroll-reveal>
           <h1 id="portfolio-title" className="playful-title">{t.portfolio}</h1>
           <button
             type="button"
@@ -107,7 +107,7 @@ export default function Portfolio() {
             aria-controls="portfolio-photos"
           >{playing ? t.pause : t.play}</button>
         </div>
-        <div className="portfolio-stage">
+        <div className="portfolio-stage" data-scroll-reveal>
           <ul
             className="portfolio-rail"
             id="portfolio-photos"

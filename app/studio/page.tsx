@@ -42,14 +42,14 @@ export default function Studio() {
   return (
     <>
       <div className="page-intro studio-intro">
-        <div className="shell">
+        <div className="shell" data-scroll-reveal>
           <h1>{t.studio}</h1>
           <p>{t.studioIntro}</p>
         </div>
       </div>
       <div className="shell wide-shell section studio-sections">
         <section id="academy">
-          <h2>{t.academy}</h2>
+          <h2 data-scroll-reveal>{t.academy}</h2>
           <p>{t.academyIntro}</p>
           <div className="academy-grid">
             {careTips.map(({ title, text }) => (
@@ -64,7 +64,7 @@ export default function Studio() {
           </div>
         </section>
         <section id="news">
-          <h2>{t.news}</h2>
+          <h2 data-scroll-reveal>{t.news}</h2>
           <p>{t.newsIntro}</p>
           <div className="opening-offers">
             {openingOffers.map(({ title, discount, text, image }) => (
@@ -84,7 +84,7 @@ export default function Studio() {
           </div>
         </section>
         <section id="contact">
-          <h2>{t.visitContact}</h2>
+          <h2 data-scroll-reveal>{t.visitContact}</h2>
           <StudioDetails heading="h3" />
           <div className="actions">
             <BookingLink />

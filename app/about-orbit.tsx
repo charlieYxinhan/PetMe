@@ -171,7 +171,7 @@ export default function AboutOrbit() {
   }
 
   return (
-    <figure className="about-orbit" data-enhanced={enhanced || undefined}>
+    <figure className="about-orbit" data-scroll-reveal data-enhanced={enhanced || undefined}>
       <div className="about-orbit-stage" id={stageId} aria-hidden="true">
         <div className="orbit-track" />
         <div className="orbit-mark" />

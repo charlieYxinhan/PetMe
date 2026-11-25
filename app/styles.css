@@ -65,12 +65,18 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
 @media (prefers-reduced-motion: no-preference) {
   .brand-draw { animation: draw-coat 1.05s ease-in-out both; }
   .brand-draw-complete { animation: complete-coat 1.05s step-end both; }
-  [data-scroll-reveal][data-revealed] { animation: scroll-reveal 440ms cubic-bezier(.2, .7, .25, 1) backwards; }
+  [data-scroll-reveal][data-revealed] { animation: scroll-reveal 560ms cubic-bezier(.2, .75, .25, 1) var(--reveal-delay, 0ms) backwards; }
+  [data-scroll-reveal][data-revealed]:focus-within { animation-duration: 0ms; animation-delay: 0ms; }
+  @media (min-width: 801px) {
+    :is(.menu-gallery, .academy-grid, .opening-offers, .studio-details) > [data-scroll-reveal]:nth-child(2),
+    :is(.care-copy, .about-orbit, .portfolio-stage)[data-scroll-reveal] { --reveal-delay: 80ms; }
+    :is(.academy-grid, .studio-details) > [data-scroll-reveal]:nth-child(3) { --reveal-delay: 160ms; }
+  }
   @keyframes draw-coat { from { stroke-dashoffset: 1.075; } to { stroke-dashoffset: 0; } }
   @keyframes complete-coat { from { opacity: 0; } to { opacity: 1; } }
   @keyframes scroll-reveal {
-    from { opacity: .22; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: .55; translate: 0 18px; }
+    to { opacity: 1; translate: 0; }
   }
 }
 .mobile-toggle, .bone-link.mobile-book { display: none; }

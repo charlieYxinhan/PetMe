@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <main id="content">{children}</main>
         <SiteFooter>
           <div className="shell wide-shell footer-inner">
-            <div className="footer-bar">
+            <div className="footer-bar" data-scroll-reveal>
               <Link href="/" className="brand-name">PetMe</Link>
               <nav aria-label={t.footerNav}>
                 <Link href="/services" className="button button-pricing">

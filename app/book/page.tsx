@@ -22,7 +22,7 @@ export default function BookingPage() {
 
   return (
     <section className="shell booking-section">
-      <div className="booking-card">
+      <div className="booking-card" data-scroll-reveal>
         <h1>{t.bookNow}</h1>
         {bookingUrl ? (
           <>
