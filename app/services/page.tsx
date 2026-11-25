@@ -10,7 +10,7 @@ export default function Services() {
     <>
       <div className="page-intro">
         <div className="shell wide-shell" data-scroll-reveal>
-          <h1>{t.pricing}</h1>
+          <h1 className="playful-title">{t.pricing}</h1>
           <p>{t.pricingIntro}</p>
           <nav className="actions" aria-label={t.pricingNav}>
             <a href="#dog" className="button button-dark">{t.dog}</a>

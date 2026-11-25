@@ -128,8 +128,7 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
 .hero h1 { font: 700 var(--hero-size)/1 var(--playful); letter-spacing: -.015em; }
 .hero h1 em { color: var(--blue-ink); font-style: normal; }
 .hero-tagline { display: block; margin-top: .15em; font-size: .7em; }
-.hero-description, .about-copy > p { font: 700 clamp(1.45rem, 2vw, 1.8rem)/1.25 var(--playful); }
-.hero-description { max-width: 32rem; margin-top: 1.2rem; color: var(--muted); }
+.hero-description { max-width: 32rem; margin-top: 1.2rem; color: var(--muted); font: 700 clamp(1.45rem, 2vw, 1.8rem)/1.25 var(--playful); }
 .hero .actions { margin-top: 1.35rem; }
 .hero-reel { position: absolute; inset: 0 0 0 auto; width: 62%; background: var(--cream); }
 .hero-reel::after { position: absolute; inset: 0; background: linear-gradient(90deg, var(--cream), rgb(250 248 245 / 93%) 16%, rgb(250 248 245 / 45%) 35%, transparent 58%); pointer-events: none; content: ""; }
@@ -224,10 +223,15 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
   gap: clamp(1.5rem, 5vw, 4rem);
   padding: clamp(.25rem, 1.5vw, 1.2rem);
 }
-.care-row:nth-child(even) { --care-tint: transparent; grid-template-areas: "copy photo"; }
-.care-row:last-child { --care-tint: #faf5eb; }
+.care-row:nth-child(even) { grid-template-areas: "copy photo"; }
+.care-row:is(:nth-child(even), :last-child) { --care-tint: #faf5eb; }
 .care-media { grid-area: photo; width: min(100%, var(--care-card-width)); justify-self: center; mix-blend-mode: multiply; }
 .care-media img { display: block; width: 100%; height: auto; }
+.care-row:nth-child(even) .care-media img {
+  mask-image: linear-gradient(90deg, transparent, #000 6px, #000 calc(100% - 6px), transparent),
+    linear-gradient(transparent, #000 6px, #000 calc(100% - 6px), transparent);
+  mask-composite: intersect;
+}
 .care-copy { grid-area: copy; width: min(100%, var(--care-card-width)); justify-self: center; padding: clamp(1.2rem, 3vw, 2.2rem); border-radius: 1.5rem; background: var(--care-tint); }
 .care-copy h3 { font: 700 clamp(2.55rem, 4.3vw, 3.75rem)/1 var(--playful); }
 .care-copy p { max-width: 42ch; margin-top: 1rem; color: var(--muted); line-height: 1.65; }
@@ -237,7 +241,8 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
 .pet-motifs svg:nth-child(odd) { transform: rotate(-9deg); }
 
 .page-intro { padding-block: clamp(2.45rem, 5vw, 4.1rem); border-bottom: 1px solid var(--edge); }
-.page-intro h1, .booking-card h1 { font-size: clamp(3.7rem, 7.5vw, 6.4rem); }
+.page-intro h1:not(.playful-title), .booking-card h1 { font-size: clamp(3.7rem, 7.5vw, 6.4rem); }
+.page-intro .playful-title { text-align: start; }
 .page-intro p { margin-top: .85rem; }
 .page-intro .actions { margin-top: 1.5rem; }
 .menu-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
@@ -245,7 +250,7 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
 .menu-poster { display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--edge); border-radius: .8rem; background: var(--paper); cursor: zoom-in; }
 .menu-poster:hover { border-color: var(--blue-ink); }
 .price-art { display: block; width: 100%; height: auto; font-family: var(--sans); font-variant-numeric: tabular-nums; }
-.menu-book { margin-top: 2rem; }
+.menu-book { justify-content: center; margin-top: 2rem; }
 
 html:has(.menu-dialog[open]) { overflow: hidden; }
 .menu-dialog { width: min(1120px, calc(100% - 1rem)); height: min(58rem, calc(100dvh - 1rem)); max-width: none; max-height: none; padding: 0; overflow: hidden; border: 1px solid var(--edge); border-radius: 1rem; background: var(--paper); color: var(--ink); }
