@@ -49,6 +49,12 @@ export default function SiteHeader() {
     setDropdown(null);
   }
 
+  function returnToHome(event: { preventDefault(): void }) {
+    if (pathname !== "/") return;
+    if (!window.location.hash && !window.location.search) event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+
   useEffect(() => {
     const header = headerRef.current;
     if (!header) return;
@@ -129,7 +135,7 @@ export default function SiteHeader() {
         >
           <span className="menu-icon" aria-hidden="true"><span /><span /><span /></span>
         </button>
-        <Link href="/" className="brand" aria-label={t.homeLink} onClick={closeNavigation}>
+        <Link href="/" className="brand" aria-label={t.homeLink} onClick={closeNavigation} onNavigate={returnToHome}>
           <span className="brand-seal" aria-hidden="true">
             <PetMeLogo />
           </span>
@@ -140,7 +146,7 @@ export default function SiteHeader() {
           <ul className="nav-list">
             {navigation.map((item) => {
               if ("href" in item) {
-                return <li key={item.label}><Link href={item.href} className={item.primary ? "nav-appointment" : undefined} onClick={closeNavigation}>{t[item.label]}</Link></li>;
+                return <li key={item.label}><Link href={item.href} className={item.primary ? "nav-appointment" : undefined} onClick={closeNavigation} onNavigate={item.href === "/" ? returnToHome : undefined}>{t[item.label]}</Link></li>;
               }
 
               const expanded = dropdown?.id === item.id;

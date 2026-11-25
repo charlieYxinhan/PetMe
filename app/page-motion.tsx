@@ -10,6 +10,24 @@ export default function PageMotion() {
   const preloaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (window.location.pathname !== "/" || window.location.hash) return;
+    const [navigation] = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+    if (navigation?.type !== "reload") return;
+
+    let frame: number | undefined;
+    const returnToTop = () => {
+      frame = window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "instant" }));
+    };
+    if (document.readyState === "complete") returnToTop();
+    else window.addEventListener("pageshow", returnToTop, { once: true });
+
+    return () => {
+      window.removeEventListener("pageshow", returnToTop);
+      if (frame !== undefined) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
     if (pathname !== "/") return;
 
     const showPhotos = () => {
