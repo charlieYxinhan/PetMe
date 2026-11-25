@@ -6,35 +6,35 @@ import BookingLink from "./booking-link";
 import GroomingReel from "./grooming-reel";
 import { PetMotifs } from "./pet-icons";
 import MenuGallery from "./services/menu-gallery";
-import { copy as t } from "./copy";
+import { copy as t, heroParagraphs } from "./copy";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const approach = [
   {
-    title: "dogApproach",
-    description: "dogIntro",
+    title: t.dogApproach,
+    description: t.dogIntro,
     image: "/approach/dog-grooming-v2.png",
-    alt: "dogAlt",
-    label: "viewDog",
+    alt: t.dogAlt,
+    label: t.viewDog,
     href: "/services#dog",
     icons: ["bowl", "ball", "brush"],
   },
   {
-    title: "cat",
-    description: "catIntro",
+    title: t.cat,
+    description: t.catIntro,
     image: "/approach/cat-grooming-v2.png",
-    alt: "catAlt",
-    label: "viewCat",
+    alt: t.catAlt,
+    label: t.viewCat,
     href: "/services#cat",
     icons: ["fish", "whale", "brush"],
   },
   {
-    title: "gentle",
-    description: "gentleIntro",
+    title: t.gentle,
+    description: t.gentleIntro,
     image: "/approach/gentle-handling-v2.png",
-    alt: "gentleAlt",
-    label: "bookNow",
+    alt: t.gentleAlt,
+    label: t.bookNow,
     href: "/book",
     icons: ["bowl", "ball", "brush"],
   },
@@ -47,7 +47,9 @@ export default function Home() {
         <div className="shell wide-shell hero-content">
           <div className="hero-copy">
             <h1 id="home-title">Gr<span className="hero-oo">oo</span>ming with <em>{t.heroEmphasis}</em>{" "}<span className="hero-tagline">{t.heroTagline}</span></h1>
-            <p className="hero-description">{t.heroIntro}</p>
+            <div className="hero-description">
+              {heroParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
             <div className="actions">
               <BookingLink />
               <Link href="/services" className="button button-outline">{t.heroPricing}</Link>
@@ -73,13 +75,13 @@ export default function Home() {
             {approach.map(({ title, description, image, alt, label, href, icons }) => (
               <article className="care-row" key={title} data-scroll-reveal>
                 <figure className="care-media">
-                  <Image src={image} alt={t[alt]} width={1254} height={1254} sizes="(max-width: 700px) 90vw, (max-width: 1120px) 45vw, (min-width: 1500px) 576px, 470px" />
+                  <Image src={image} alt={alt} width={1254} height={1254} sizes="(max-width: 700px) 90vw, (max-width: 1120px) 45vw, (min-width: 1500px) 576px, 470px" />
                 </figure>
                 <div className="care-copy">
-                  <h3>{t[title]}</h3>
-                  <p>{t[description]}</p>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
                   <PetMotifs icons={icons} />
-                  {href === "/book" ? <BookingLink /> : <Link href={href} className="button button-outline">{t[label]}</Link>}
+                  {href === "/book" ? <BookingLink /> : <Link href={href} className="button button-outline">{label}</Link>}
                 </div>
               </article>
             ))}

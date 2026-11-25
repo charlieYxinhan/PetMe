@@ -1,19 +1,61 @@
 import type { ReactNode } from "react";
 
-const social: [string, ReactNode][] = [
-  ["Instagram", <><rect x="4" y="4" width="16" height="16" rx="5" /><circle cx="12" cy="12" r="3.4" /><circle cx="17" cy="7.5" r=".95" fill="currentColor" stroke="none" /></>],
-  ["Facebook", <path d="M14.6 5h-2.1a3.4 3.4 0 0 0-3.4 3.5V11H7v3h2.1v5H12v-5h2.5l.5-3h-3V9.1C12 8.3 12.4 8 13 8h1.6Z" fill="currentColor" stroke="none" />],
-  ["X", <path d="M4.8 5h3.9l10.5 14h-3.9L4.8 5Zm14 0L5.2 19" />],
+import { socialLinks } from "./site";
+
+const social: { name: string; href?: string; drawing: ReactNode }[] = [
+  {
+    name: "Instagram",
+    href: socialLinks.instagram,
+    drawing: (
+      <>
+        <rect x="4" y="4" width="16" height="16" rx="5" />
+        <circle cx="12" cy="12" r="3.4" />
+        <circle cx="17" cy="7.5" r=".95" fill="currentColor" stroke="none" />
+      </>
+    ),
+  },
+  {
+    name: "Facebook",
+    href: socialLinks.facebook,
+    drawing: (
+      <path
+        d="M14.6 5h-2.1a3.4 3.4 0 0 0-3.4 3.5V11H7v3h2.1v5H12v-5h2.5l.5-3h-3V9.1C12 8.3 12.4 8 13 8h1.6Z"
+        fill="currentColor"
+        stroke="none"
+      />
+    ),
+  },
+  { name: "X", drawing: <path d="M4.8 5h3.9l10.5 14h-3.9L4.8 5Zm14 0L5.2 19" /> },
 ];
 
 export function SocialIcons() {
   return (
     <div className="social-icons">
-      {social.map(([name, drawing]) => (
-        <span key={name} role="img" aria-label={name}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{drawing}</svg>
-        </span>
-      ))}
+      {social.map(({ name, drawing, href }) => {
+        const icon = (
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.65"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            {drawing}
+          </svg>
+        );
+
+        return href ? (
+          <a key={name} className="social-icon" href={href} target="_blank" rel="noopener noreferrer" aria-label={name}>
+            {icon}
+          </a>
+        ) : (
+          <span key={name} className="social-icon" role="img" aria-label={name}>
+            {icon}
+          </span>
+        );
+      })}
     </div>
   );
 }
