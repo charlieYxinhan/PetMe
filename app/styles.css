@@ -128,7 +128,8 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
 .hero h1 { font: 700 var(--hero-size)/1 var(--playful); letter-spacing: -.015em; }
 .hero h1 em { color: var(--blue-ink); font-style: normal; }
 .hero-tagline { display: block; margin-top: .15em; font-size: .7em; }
-.hero-description { max-width: 32rem; margin-top: 1.2rem; color: var(--muted); font: 700 clamp(1.45rem, 2vw, 1.8rem)/1.25 var(--playful); }
+.hero-description, .about-copy > p { font: 700 clamp(1.45rem, 2vw, 1.8rem)/1.25 var(--playful); }
+.hero-description { max-width: 32rem; margin-top: 1.2rem; color: var(--muted); }
 .hero .actions { margin-top: 1.35rem; }
 .hero-reel { position: absolute; inset: 0 0 0 auto; width: 62%; background: var(--cream); }
 .hero-reel::after { position: absolute; inset: 0; background: linear-gradient(90deg, var(--cream), rgb(250 248 245 / 93%) 16%, rgb(250 248 245 / 45%) 35%, transparent 58%); pointer-events: none; content: ""; }
