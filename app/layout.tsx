@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="footer-bar">
               <Link href="/" className="brand-name">PetMe</Link>
               <nav aria-label={t.footerNav}>
-                <Link href="/services" className="button footer-pricing">
+                <Link href="/services" className="button button-pricing">
                   <span className="bloom" aria-hidden="true" />{t.pricing}
                 </Link>
                 <BookingLink />

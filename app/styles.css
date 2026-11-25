@@ -98,6 +98,9 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
 .button-dark:hover { background: #315463; }
 .button-outline { border-color: var(--ink); color: var(--ink); }
 .button-outline:hover { background: var(--sky); }
+.button-pricing { gap: .45rem; border-color: #c8dfe9; background: var(--pricing-accent); color: var(--blue-ink); }
+.button-pricing:hover { background: #cde5f2; }
+.button-pricing .bloom { width: .96rem; flex-shrink: 0; }
 .bone-link { position: relative; isolation: isolate; display: inline-grid; width: 10.5rem; max-width: 100%; min-height: 3.5rem; place-items: center; padding: .8rem 1.55rem; border-radius: .8rem; color: #33291f; font-size: .95rem; font-weight: 780; line-height: 1.2; text-align: center; text-decoration: none; }
 .bone-link svg { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .bone-link-underlay { fill: #d99c85; }
@@ -279,9 +282,7 @@ html:has(.menu-dialog[open]) { overflow: hidden; }
 .footer-bar, .footer-bar nav { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; }
 .footer-bar { justify-content: space-between; }
 .footer-bar nav { gap: .65rem; }
-.footer-pricing { gap: .45rem; min-height: 44px; padding: .55rem 1rem; border-color: #c8dfe9; background: var(--pricing-accent); color: var(--blue-ink); }
-.footer-pricing:hover { background: #cde5f2; }
-.footer-pricing .bloom { width: .96rem; }
+.footer-bar .button-pricing { min-height: 44px; padding: .55rem 1rem; }
 .studio-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.75rem, 2vw, 1.25rem); }
 .studio-card { padding: clamp(1.1rem, 2.5vw, 1.8rem); border: 1px solid var(--edge); border-radius: 1rem; }
 .studio-card-visit { background: color-mix(in srgb, var(--taupe) 12%, var(--cream)); }

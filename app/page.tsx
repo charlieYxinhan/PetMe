@@ -50,7 +50,9 @@ export default function Home() {
             <p className="hero-description">{t.heroIntro}</p>
             <div className="actions">
               <BookingLink />
-              <Link href="/services" className="button button-outline">{t.heroPricing}</Link>
+              <Link href="/services" className="button button-pricing">
+                <span className="bloom" aria-hidden="true" />{t.heroPricing}
+              </Link>
             </div>
           </div>
         </div>
