@@ -25,18 +25,22 @@ export default function PageMotion() {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (motion.matches) return;
 
+    const elements = document.querySelectorAll("[data-scroll-reveal]:not([data-revealed])");
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
+        entry.target.removeAttribute("data-reveal-pending");
         entry.target.setAttribute("data-revealed", "");
         observer.unobserve(entry.target);
       }
-    }, { rootMargin: "0px 0px -16px 0px" });
+    }, { rootMargin: "0px 0px -48px 0px" });
+
+    elements.forEach((element) => element.setAttribute("data-reveal-pending", ""));
 
     let disposed = false;
     function observeSections() {
       if (disposed) return;
-      document.querySelectorAll("[data-scroll-reveal]:not([data-revealed])").forEach((element) => observer.observe(element));
+      elements.forEach((element) => observer.observe(element));
     }
 
     const loadingAnimation = preloaderRef.current?.getAnimations?.()[0];
@@ -46,6 +50,7 @@ export default function PageMotion() {
     return () => {
       disposed = true;
       observer.disconnect();
+      elements.forEach((element) => element.removeAttribute("data-reveal-pending"));
     };
   }, [pathname]);
 

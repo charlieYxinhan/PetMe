@@ -13,7 +13,7 @@ export const metadata: Metadata = { alternates: { canonical: "/" } };
 const approach = [
   {
     title: t.dogApproach,
-    description: t.dogIntro,
+    paragraphs: t.dogIntro,
     image: "/approach/dog-grooming-v2.png",
     alt: t.dogAlt,
     label: t.viewDog,
@@ -21,9 +21,9 @@ const approach = [
     icons: ["bowl", "ball", "brush"],
   },
   {
-    title: t.cat,
-    description: t.catIntro,
-    image: "/approach/cat-grooming-v2.png",
+    title: t.catApproach,
+    paragraphs: [t.catIntro],
+    image: "/approach/cat-grooming-v3.webp",
     alt: t.catAlt,
     label: t.viewCat,
     href: "/services#cat",
@@ -31,7 +31,7 @@ const approach = [
   },
   {
     title: t.gentle,
-    description: t.gentleIntro,
+    paragraphs: [t.gentleIntro],
     image: "/approach/gentle-handling-v2.png",
     alt: t.gentleAlt,
     label: t.bookNow,
@@ -72,14 +72,14 @@ export default function Home() {
         <div className="shell wide-shell section">
           <div className="section-heading" data-scroll-reveal><h2 id="care-title" className="playful-title">{t.approach}</h2></div>
           <div className="care-rows">
-            {approach.map(({ title, description, image, alt, label, href, icons }) => (
+            {approach.map(({ title, paragraphs, image, alt, label, href, icons }) => (
               <article className="care-row" key={title}>
                 <figure className="care-media" data-scroll-reveal>
                   <Image src={image} alt={alt} width={1254} height={1254} sizes="(max-width: 700px) 90vw, (max-width: 1120px) 45vw, (min-width: 1500px) 576px, 470px" />
                 </figure>
                 <div className="care-copy" data-scroll-reveal>
                   <h3>{title}</h3>
-                  <p>{description}</p>
+                  {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                   <PetMotifs icons={icons} />
                   {href === "/book" ? <BookingLink /> : <Link href={href} className="button button-outline">{label}</Link>}
                 </div>
@@ -93,7 +93,8 @@ export default function Home() {
         <div className="shell wide-shell section about-grid">
           <h2 id="about-title" className="playful-title" data-scroll-reveal>{t.about}</h2>
           <div className="about-copy" data-scroll-reveal>
-            <p>{t.aboutIntro}</p>
+            <h3 className="about-tagline">{t.aboutTagline}</h3>
+            {t.aboutIntro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             <ul className="about-services">
               <li><Link href="/services#dog" className="text-link">{t.dog}</Link></li>
               <li><Link href="/services#cat" className="text-link">{t.cat}</Link></li>
