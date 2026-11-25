@@ -1,17 +1,17 @@
-import whiteDog from "../launch-materials/images/grooming-01.jpg";
+import whiteDog from "../launch-materials/images/grooming-01-blue-bow.jpg";
 import creamDog from "../launch-materials/images/grooming-02.jpg";
-import floppyEars from "../launch-materials/images/grooming-03.jpg";
+import floppyEars from "../launch-materials/images/grooming-03-scissor-trim.jpg";
 import curlyCoat from "../launch-materials/images/grooming-04.jpg";
 import goldenDog from "../launch-materials/images/grooming-05.jpg";
 import apricotDog from "../launch-materials/images/grooming-06.jpg";
-import roundedTrim from "../launch-materials/images/grooming-07.jpg";
+import roundedTrim from "../launch-materials/images/grooming-07-clipper-trim.jpg";
 
 export const portfolioPhotos = [
-  { photo: whiteDog, alt: "White dog with a softly rounded trim" },
+  { photo: whiteDog, alt: "White dog with a round trim and a blue bow" },
   { photo: creamDog, alt: "Cream-colored dog with a rounded body trim" },
-  { photo: floppyEars, alt: "White and brown dog with tidy paws and softly shaped ears" },
+  { photo: floppyEars, alt: "White and brown dog getting a scissor trim" },
   { photo: curlyCoat, alt: "Red curly-coated dog with a rounded face and ears" },
   { photo: goldenDog, alt: "Golden dog with a neatly shaped coat and curled tail" },
   { photo: apricotDog, alt: "Cream and apricot dog with a rounded muzzle" },
-  { photo: roundedTrim, alt: "Smiling apricot dog with a round face trim" },
+  { photo: roundedTrim, alt: "Smiling cream-colored dog being groomed with clippers" },
 ];

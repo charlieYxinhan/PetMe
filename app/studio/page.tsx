@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import BookingLink from "../booking-link";
-import { portfolioPhotos } from "../portfolio-images";
+import fullSpaPhoto from "../../launch-materials/images/grooming-04.jpg";
+import friendPhoto from "../../launch-materials/images/grooming-01.jpg";
 import StudioDetails from "../studio-details";
 import { copy as t } from "../copy";
 
@@ -28,13 +29,15 @@ const openingOffers = [
     title: "First Full Spa",
     discount: "15% Off",
     text: "Get 15% off your first Full Spa groom after we open.",
-    image: portfolioPhotos[3],
+    photo: fullSpaPhoto,
+    alt: "Red curly-coated dog with a rounded face and ears",
   },
   {
     title: "Bring a Friend",
     discount: "10% Off Each",
     text: "Book with a friend who’s new to PetMe and you’ll both get 10% off your groom.",
-    image: portfolioPhotos[0],
+    photo: friendPhoto,
+    alt: "White dog with a softly rounded trim",
   },
 ];
 
@@ -67,9 +70,11 @@ export default function Studio() {
           <h2 data-scroll-reveal>{t.news}</h2>
           <p>{t.newsIntro}</p>
           <div className="opening-offers">
-            {openingOffers.map(({ title, discount, text, image }) => (
+            {openingOffers.map(({ title, discount, text, photo, alt }) => (
               <article className="opening-offer" key={title} data-scroll-reveal>
-                <Image src={image.photo} alt={image.alt} sizes="(max-width: 720px) 90vw, 22rem" />
+                <div className="opening-offer-media">
+                  <Image src={photo} alt={alt} fill sizes="(max-width: 720px) 45vw, 22rem" />
+                </div>
                 <div className="opening-offer-copy">
                   <h3>{title}</h3>
                   <p className="opening-offer-discount">{discount}</p>
