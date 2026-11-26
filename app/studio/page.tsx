@@ -1,46 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import BookingLink from "../booking-link";
-import fullSpaPhoto from "../../launch-materials/images/grooming-09-golden-bath.jpg";
-import friendPhoto from "../../launch-materials/images/grooming-08-husky-brush.jpg";
+import NewsEvents from "../news-events";
+import Portfolio from "../portfolio";
 import StudioDetails from "../studio-details";
 import { copy as t } from "../copy";
 
 export const metadata: Metadata = { title: t.studio, description: t.studioIntro, alternates: { canonical: "/studio" } };
-
-const careTips = [
-  {
-    title: "Start with Short Brush Sessions",
-    text: "Try a few gentle strokes at a time and give your pet a break if they pull away. Ask us which brush suits their coat.",
-  },
-  {
-    title: "Make Grooming Tools Familiar",
-    text: "Let your pet sniff a comb or towel at their own pace. Move on to gentle brushing when they’re relaxed.",
-  },
-  {
-    title: "Tell Us What Helps",
-    text: "Let us know about tangles, sensitive spots, or anything that helps your pet settle in when you book.",
-  },
-];
-
-const openingOffers = [
-  {
-    title: "First Full Spa",
-    discount: "15% Off",
-    text: "Get 15% off your first Full Spa groom after we open.",
-    photo: fullSpaPhoto,
-    alt: "Golden retriever with shampoo suds in a grooming tub",
-  },
-  {
-    title: "Bring a Friend",
-    discount: "10% Off Each",
-    text: "Book with a friend who’s new to PetMe and you’ll both get 10% off your groom.",
-    photo: friendPhoto,
-    alt: "Siberian husky having its coat brushed",
-    objectPosition: "72% 24%",
-  },
-];
 
 export default function Studio() {
   return (
@@ -52,43 +18,18 @@ export default function Studio() {
         </div>
       </div>
       <div className="shell wide-shell section studio-sections">
-        <section id="academy">
-          <h2 data-scroll-reveal>{t.academy}</h2>
-          <p>{t.academyIntro}</p>
-          <div className="academy-grid">
-            {careTips.map(({ title, text }) => (
-              <article className="academy-tip" key={title} data-scroll-reveal>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
-          <div className="actions">
-            <Link className="button button-outline" href="/services">{t.viewPricing}</Link>
-          </div>
+        <section id="gallery" aria-labelledby="portfolio-title">
+          <Portfolio />
+          <section className="portfolio-next" aria-labelledby="portfolio-next-title" data-scroll-reveal>
+            <h3 id="portfolio-next-title" className="playful-title">Find a Groomer for Your Pet</h3>
+            <p>Explore baths, tidies, and full grooms for dogs and cats at our Markham studio.</p>
+            <div className="actions">
+              <BookingLink />
+              <Link href="/services" className="button button-outline">{t.viewPricing}</Link>
+            </div>
+          </section>
         </section>
-        <section id="news">
-          <h2 data-scroll-reveal>{t.news}</h2>
-          <p>{t.newsIntro}</p>
-          <div className="opening-offers">
-            {openingOffers.map(({ title, discount, text, photo, alt, objectPosition }) => (
-              <article className="opening-offer" key={title} data-scroll-reveal>
-                <div className="opening-offer-media">
-                  <Image src={photo} alt={alt} fill sizes="(max-width: 720px) 45vw, 22rem" style={{ objectPosition }} />
-                </div>
-                <div className="opening-offer-copy">
-                  <h3>{title}</h3>
-                  <p className="opening-offer-discount">{discount}</p>
-                  <p>{text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-          <p>Ask us for opening dates and offer details when you book.</p>
-          <div className="actions">
-            <BookingLink />
-          </div>
-        </section>
+        <NewsEvents />
         <section id="contact">
           <h2 data-scroll-reveal>{t.visitContact}</h2>
           <StudioDetails heading="h3" />

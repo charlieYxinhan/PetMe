@@ -95,48 +95,46 @@ export default function Portfolio() {
   }
 
   return (
-    <section className="portfolio" id="gallery" aria-labelledby="portfolio-title">
-      <div className="shell wide-shell">
-        <div className="portfolio-heading" data-scroll-reveal>
-          <h1 id="portfolio-title" className="playful-title">{t.portfolio}</h1>
-          <button
-            type="button"
-            className="portfolio-toggle"
-            onClick={() => setPlayPreference(!playing)}
-            aria-label={playing ? t.pauseAutoplay : t.startAutoplay}
-            aria-controls="portfolio-photos"
-          >{playing ? t.pause : t.play}</button>
-        </div>
-        <div className="portfolio-stage" data-scroll-reveal>
-          <ul
-            className="portfolio-rail"
-            id="portfolio-photos"
-            aria-label={t.groomingPhotos}
-            tabIndex={0}
-            ref={railRef}
-            onKeyDown={(event) => {
-              if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-                event.preventDefault();
-                move(event.key === "ArrowLeft" ? -1 : 1);
-              }
-            }}
-            onPointerDown={startDrag}
-            onPointerMove={drag}
-            onPointerUp={finishDrag}
-            onPointerCancel={finishDrag}
-            onLostPointerCapture={finishDrag}
-            onWheel={() => { lastInteraction.current = Date.now(); }}
-          >
-            {portfolioPhotos.map(({ photo, alt }) => (
-              <li key={alt} className="portfolio-photo">
-                <Image src={photo} alt={alt} fill sizes="(min-width: 1500px) 352px, (max-width: 620px) 42vw, 238px" draggable={false} />
-              </li>
-            ))}
-          </ul>
-          <button type="button" className="portfolio-arrow portfolio-arrow-prev" onClick={() => move(-1)} aria-label={t.previousPhoto} aria-controls="portfolio-photos"><span aria-hidden="true" /></button>
-          <button type="button" className="portfolio-arrow portfolio-arrow-next" onClick={() => move(1)} aria-label={t.nextPhoto} aria-controls="portfolio-photos"><span aria-hidden="true" /></button>
-        </div>
+    <div className="portfolio">
+      <div className="portfolio-heading" data-scroll-reveal>
+        <h2 id="portfolio-title" className="playful-title">{t.portfolio}</h2>
+        <button
+          type="button"
+          className="portfolio-toggle"
+          onClick={() => setPlayPreference(!playing)}
+          aria-label={playing ? t.pauseAutoplay : t.startAutoplay}
+          aria-controls="portfolio-photos"
+        >{playing ? t.pause : t.play}</button>
       </div>
-    </section>
+      <div className="portfolio-stage" data-scroll-reveal>
+        <ul
+          className="portfolio-rail"
+          id="portfolio-photos"
+          aria-label={t.groomingPhotos}
+          tabIndex={0}
+          ref={railRef}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+              event.preventDefault();
+              move(event.key === "ArrowLeft" ? -1 : 1);
+            }
+          }}
+          onPointerDown={startDrag}
+          onPointerMove={drag}
+          onPointerUp={finishDrag}
+          onPointerCancel={finishDrag}
+          onLostPointerCapture={finishDrag}
+          onWheel={() => { lastInteraction.current = Date.now(); }}
+        >
+          {portfolioPhotos.map(({ photo, alt }) => (
+            <li key={alt} className="portfolio-photo">
+              <Image src={photo} alt={alt} fill sizes="(min-width: 1500px) 352px, (max-width: 620px) 42vw, 238px" draggable={false} />
+            </li>
+          ))}
+        </ul>
+        <button type="button" className="portfolio-arrow portfolio-arrow-prev" onClick={() => move(-1)} aria-label={t.previousPhoto} aria-controls="portfolio-photos"><span aria-hidden="true" /></button>
+        <button type="button" className="portfolio-arrow portfolio-arrow-next" onClick={() => move(1)} aria-label={t.nextPhoto} aria-controls="portfolio-photos"><span aria-hidden="true" /></button>
+      </div>
+    </div>
   );
 }

@@ -31,7 +31,7 @@ export default function PageMotion() {
     if (pathname !== "/") return;
 
     const showPhotos = () => {
-      if (window.location.hash === "#gallery") router.replace("/photos");
+      if (window.location.hash === "#gallery") router.replace("/studio#gallery");
     };
     showPhotos();
     window.addEventListener("hashchange", showPhotos);

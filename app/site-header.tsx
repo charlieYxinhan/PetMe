@@ -28,8 +28,7 @@ const navigation: readonly NavigationItem[] = [
   ] },
   { label: "appointments", href: "/book", primary: true },
   { label: "studio", id: "studio-menu", links: [
-    { label: "photos", href: "/photos" },
-    { label: "academy", href: "/studio#academy" },
+    { label: "photos", href: "/studio#gallery" },
     { label: "news", href: "/studio#news" },
   ] },
   { label: "contact", href: "/studio#contact" },

@@ -4,6 +4,7 @@ import Link from "next/link";
 import AboutOrbit from "./about-orbit";
 import BookingLink from "./booking-link";
 import GroomingReel from "./grooming-reel";
+import NewsEvents from "./news-events";
 import { PetMotifs } from "./pet-icons";
 import MenuGallery from "./services/menu-gallery";
 import { copy as t } from "./copy";
@@ -58,6 +59,10 @@ export default function Home() {
         </div>
         <GroomingReel />
       </section>
+
+      <div className="shell wide-shell section">
+        <NewsEvents />
+      </div>
 
       <section id="pricing" className="pricing-band" aria-labelledby="services-title">
         <div className="shell wide-shell section">
