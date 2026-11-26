@@ -171,23 +171,30 @@ export default function AboutOrbit() {
   }
 
   return (
-    <figure className="about-orbit" data-scroll-reveal data-enhanced={enhanced || undefined}>
-      <div className="about-orbit-stage" id={stageId} aria-hidden="true">
-        <div className="orbit-track" />
-        <div className="orbit-mark" />
-        <div className="orbit-fallback">
-          {motifs.map(({ kind, angle, size }) => {
-            const [x, y] = orbitPosition(angle);
-            return <span className={`orbit-item orbit-${kind}`} key={angle} style={{ left: `${x * 100}%`, top: `${y * 100}%`, width: `${size * 100}%` }} />;
-          })}
+    <div className="about-orbit" data-scroll-reveal data-enhanced={enhanced || undefined}>
+      <div className="about-orbit-panel">
+        <div className="about-orbit-stage" id={stageId} aria-hidden="true">
+          <div className="orbit-track" />
+          <div className="orbit-mark" />
+          <div className="orbit-fallback">
+            {motifs.map(({ kind, angle, size }) => {
+              const [x, y] = orbitPosition(angle);
+              return <span className={`orbit-item orbit-${kind}`} key={angle} style={{ left: `${x * 100}%`, top: `${y * 100}%`, width: `${size * 100}%` }} />;
+            })}
+          </div>
+          <canvas ref={canvasRef} />
         </div>
-        <canvas ref={canvasRef} />
+        <div className="orbit-invitation">
+          <h3>{t.treatTitle} <span aria-hidden="true">🐾</span></h3>
+          <p className="orbit-invitation-lead">{t.treatIntro}</p>
+          <p>{t.treatDetails} <span aria-hidden="true">💛</span></p>
+        </div>
       </div>
       {enhanced && (
         <button type="button" className="orbit-toggle" aria-controls={stageId} onClick={toggleMotion}>
           {paused ? t.playAnimation : t.pauseAnimation}
         </button>
       )}
-    </figure>
+    </div>
   );
 }
