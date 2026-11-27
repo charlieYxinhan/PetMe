@@ -118,8 +118,8 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
 .button-outline:hover { background: var(--sky); }
 .button-pricing { gap: .45rem; border-color: #c8dfe9; background: var(--pricing-accent); color: var(--blue-ink); }
 .button-pricing:hover { background: #cde5f2; }
-.button-pricing-cat { border-color: #ebcbb9; background: #f6e2d6; color: #563f30; }
-.button-pricing-cat:hover { background: #f1d4c3; }
+.button-peach { border-color: #ebcbb9; background: #f6e2d6; color: #563f30; }
+.button-peach:hover { background: #f1d4c3; }
 .button-pricing .bloom { width: .96rem; flex-shrink: 0; }
 .bone-link { position: relative; isolation: isolate; display: inline-grid; width: 10.5rem; max-width: 100%; min-height: 3.5rem; place-items: center; padding: .8rem 1.55rem; border-radius: .8rem; color: #33291f; font-size: .95rem; font-weight: 780; line-height: 1.2; text-align: center; text-decoration: none; }
 .bone-link svg { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
@@ -261,7 +261,7 @@ h3 { font-size: clamp(2rem, 4vw, 2.7rem); }
 .pet-motifs svg:nth-child(odd) { transform: rotate(-9deg); }
 
 .page-intro { padding-block: clamp(2.45rem, 5vw, 4.1rem); border-bottom: 1px solid var(--edge); }
-.page-intro h1:not(.playful-title), .booking-card h1 { font-size: clamp(3.7rem, 7.5vw, 6.4rem); }
+.page-intro h1:not(.playful-title) { font-size: clamp(3.7rem, 7.5vw, 6.4rem); }
 .page-intro .playful-title { text-align: start; }
 .page-intro p { margin-top: .85rem; }
 .pricing-nav { justify-content: center; margin-top: 1.5rem; }
@@ -295,8 +295,10 @@ html:has(.menu-dialog[open]) { overflow: hidden; }
 .menu-zoom-pane[data-fit] .menu-art-frame { width: var(--poster-fit-width); }
 
 .booking-section { display: grid; align-items: center; min-height: 62vh; padding-block: 3rem; }
-.booking-card { width: min(100%, 760px); padding: clamp(1.8rem, 6vw, 4rem); border: 1px solid var(--edge); border-radius: 2rem; background: var(--paper); }
-.booking-card p { max-width: 48ch; margin-block: 1.1rem 1.7rem; }
+.booking-card { justify-self: center; width: min(100%, 760px); padding: clamp(1.8rem, 6vw, 4rem); border: 1px solid var(--edge); border-radius: 2rem; background: var(--paper); text-align: center; }
+.booking-card p { max-width: 48ch; margin: 1.1rem auto 1.7rem; }
+.booking-actions { justify-content: center; }
+.booking-actions .button { width: min(100%, 15rem); padding-inline: 1rem; }
 .studio-sections { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.25rem; }
 .studio-intro h1, :is(.studio-sections > section, .news-events) > h2 { color: #33291f; font-family: var(--playful); font-weight: 700; line-height: 1.06; }
 .studio-intro h1 { font-size: clamp(3.35rem, 7.5vw, 6.4rem); }

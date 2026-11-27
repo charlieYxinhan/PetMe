@@ -23,21 +23,18 @@ export default function BookingPage() {
   return (
     <section className="shell booking-section">
       <div className="booking-card" data-scroll-reveal>
-        <h1>{t.bookNow}</h1>
-        {bookingUrl ? (
-          <>
-            <p>{t.bookingIntro}</p>
-            <a href={bookingUrl} className="button button-dark">{t.availableTimes}</a>
-          </>
-        ) : (
-          <>
-            <p>{t.phoneBookingIntro}</p>
-            <div className="actions">
-              <a href={`tel:${studio.bookingPhone}`} className="button button-dark">{t.phoneBooking}</a>
-              <Link href="/services" className="button button-outline">{t.viewPricing}</Link>
-            </div>
-          </>
-        )}
+        <h1 className="playful-title">{t.bookNow}</h1>
+        <p>{bookingUrl ? t.bookingIntro : t.phoneBookingIntro}</p>
+        <div className="actions booking-actions">
+          {bookingUrl ? (
+            <a href={bookingUrl} className="button button-peach">{t.availableTimes}</a>
+          ) : (
+            <>
+              <a href={`tel:${studio.bookingPhone}`} className="button button-peach">{t.phoneBooking}</a>
+              <Link href="/services" className="button button-pricing">{t.viewPricing}</Link>
+            </>
+          )}
+        </div>
       </div>
     </section>
   );

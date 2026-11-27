@@ -14,7 +14,7 @@ export default function Services() {
           <p>{t.pricingIntro}</p>
           <nav className="actions pricing-nav" aria-label={t.pricingNav}>
             <a href="#dog" className="button button-pricing">{t.dogPricingLink}</a>
-            <a href="#cat" className="button button-pricing-cat">{t.catPricingLink}</a>
+            <a href="#cat" className="button button-peach">{t.catPricingLink}</a>
           </nav>
         </div>
       </div>
