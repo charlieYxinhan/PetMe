@@ -319,6 +319,10 @@ html:has(.menu-dialog[open]) { overflow: hidden; }
 .footer-bar { justify-content: space-between; }
 .footer-bar nav { gap: .65rem; }
 .footer-bar .button-pricing { min-height: 44px; padding: .55rem 1rem; }
+@media (width > 800px) {
+  .footer-bar[data-center-booking] { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+  .footer-bar[data-center-booking] .brand-name { justify-self: start; }
+}
 .studio-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.75rem, 2vw, 1.25rem); }
 .studio-card { padding: clamp(1.1rem, 2.5vw, 1.8rem); border: 1px solid var(--edge); border-radius: 1rem; }
 .studio-card-visit { background: color-mix(in srgb, var(--taupe) 12%, var(--cream)); }
