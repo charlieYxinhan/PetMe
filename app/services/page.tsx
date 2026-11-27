@@ -12,9 +12,9 @@ export default function Services() {
         <div className="shell wide-shell" data-scroll-reveal>
           <h1 className="playful-title">{t.pricing}</h1>
           <p>{t.pricingIntro}</p>
-          <nav className="actions" aria-label={t.pricingNav}>
-            <a href="#dog" className="button button-dark">{t.dog}</a>
-            <a href="#cat" className="button button-outline">{t.cat}</a>
+          <nav className="actions pricing-nav" aria-label={t.pricingNav}>
+            <a href="#dog" className="button button-pricing">{t.dogPricingLink}</a>
+            <a href="#cat" className="button button-pricing-cat">{t.catPricingLink}</a>
           </nav>
         </div>
       </div>

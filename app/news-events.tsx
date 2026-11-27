@@ -11,6 +11,7 @@ const openingOffers = [
     text: "Get 15% off your first Full Spa groom after we open.",
     photo: fullSpaPhoto,
     alt: "Golden retriever with shampoo suds in a grooming tub",
+    objectPosition: "6% top",
   },
   {
     title: "Bring a Friend",
@@ -18,7 +19,7 @@ const openingOffers = [
     text: "Book with a friend who’s new to PetMe and you’ll both get 10% off your groom.",
     photo: friendPhoto,
     alt: "Siberian husky having its coat brushed",
-    objectPosition: "72% 24%",
+    objectPosition: "45% top",
   },
 ];
 
@@ -31,7 +32,7 @@ export default function NewsEvents() {
         {openingOffers.map(({ title, discount, text, photo, alt, objectPosition }) => (
           <article className="opening-offer" key={title} data-scroll-reveal>
             <div className="opening-offer-media">
-              <Image src={photo} alt={alt} fill sizes="(max-width: 720px) 45vw, 22rem" style={{ objectPosition }} />
+              <Image src={photo} alt={alt} fill sizes="(max-width: 400px) calc(100vw - 2rem), (max-width: 960px) 45vw, 22rem" style={{ objectPosition }} />
             </div>
             <div className="opening-offer-copy">
               <h3>{title}</h3>
