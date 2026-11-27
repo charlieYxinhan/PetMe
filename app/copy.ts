@@ -46,11 +46,20 @@ export const copy = {
   dogAlt: "Golden retriever wrapped in a towel",
   viewDog: "View Dog Grooming",
   catApproach: "A Little Calm for Your Cat",
-  catIntro: "Some cats need a little extra time to feel at home. From a bath and tidy to a full groom, we work at your cat’s pace and give them time to settle between steps.",
+  catIntro: [
+    "Some cats need a little extra time and patience. At Pet Me, cats are groomed in their own separate, quiet, low-stress room — completely away from the dogs.",
+    "Our groomers bring over 10 years of experience and a deep understanding of feline behaviour, working gently at each cat's own pace, with time to relax between every step.",
+    "From a bath and tidy to a full groom, your cat's comfort and safety always come first.",
+    "At PetMe, your cat’s comfort, safety, and well-being always come first.",
+  ],
   catAlt: "Brown tabby with a white chest and paws sitting on a scratching post",
   viewCat: "View Cat Grooming",
   gentle: "Gentle & Loving Care",
-  gentleIntro: "We understand that every pet is different. We take the time to help your furry friend feel comfortable and at ease, using gentle handling, patience, and love throughout every grooming session.",
+  gentleIntro: [
+    "At Pet Me, every pet is treated like our own. Our groomers bring over 10 years of experience and a calm, patient touch to every appointment — no rushing, no force, just gentle handling and lots of love.",
+    "From nervous first-timers to senior pets, we go at your pet's pace, with breaks whenever they need one, so grooming becomes something they can relax into — and maybe even enjoy.",
+    "Because to us, it's never just a haircut. It's care, trust, and a happy, fresh-smelling cuddle at the end.",
+  ],
   gentleAlt: "Small cream-colored dog wrapped in a towel",
   aboutTagline: "More Than Grooming, It’s Love and Care.",
   aboutIntro: [

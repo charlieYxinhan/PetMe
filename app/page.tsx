@@ -23,7 +23,7 @@ const approach = [
   },
   {
     title: t.catApproach,
-    paragraphs: [t.catIntro],
+    paragraphs: t.catIntro,
     image: "/approach/cat-grooming-v3.webp",
     alt: t.catAlt,
     label: t.viewCat,
@@ -32,7 +32,7 @@ const approach = [
   },
   {
     title: t.gentle,
-    paragraphs: [t.gentleIntro],
+    paragraphs: t.gentleIntro,
     image: "/approach/gentle-handling-v2.png",
     alt: t.gentleAlt,
     label: t.bookNow,
