@@ -34,6 +34,9 @@ export default function Studio() {
           <h2 data-scroll-reveal>{t.visitContact}</h2>
           <StudioDetails heading="h3" />
           <div className="actions">
+            <Link href="/services" className="button button-pricing">
+              <span className="bloom" aria-hidden="true" />{t.pricing}
+            </Link>
             <BookingLink />
           </div>
         </section>
